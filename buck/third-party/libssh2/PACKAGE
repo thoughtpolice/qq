@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: © 2024 Austin Seipp
+# SPDX-License-Identifier: Apache-2.0
+
+load("@root//buck/shims/package.bzl", "pkg", "OsvPurlInfo")
+
+REAL_VERSION="1.11.0"
+
+pkg.info(
+    version = f"{REAL_VERSION}+gef292424bb5d136f888a2d2e92460de12c143ab4",
+    description = """
+        Data compression library and format.
+    """,
+    license = "Zlib",
+    copyright = [
+        "1995-2024 Jean-loup Gailly and Mark Adler",
+    ],
+    visibility = ['PUBLIC'],
+
+    osv_info = OsvPurlInfo(name = "pkg:generic/libssh2", version = REAL_VERSION),
+)
