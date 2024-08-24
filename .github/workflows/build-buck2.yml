@@ -1,0 +1,57 @@
+name: buck2
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions: read-all
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            abi: x86_64-unknown-linux-gnu
+          - os: windows-latest
+            abi: x86_64-pc-windows-msvc
+          - os: macos-latest
+            abi: aarch64-apple-darwin
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15 # NOTE (aseipp): keep in-sync with the build.yml timeout limit
+
+    name: build buck2 binaries
+    steps:
+      - name: (Linux) Install Mold
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update && sudo apt-get install -y mold
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+        with:
+          fetch-depth: 0
+      - name: Install DotSlash
+        uses: ./.github/actions/install-dotslash
+      # FIXME (aseipp): use tools out of `$PATH` after we have dotslash .exe
+      # shim files for windows. until then just invoke manually
+      - name: Init jj repository
+        shell: bash
+        run: dotslash ./buck/bin/extra/jj git init --colocate
+      - name: buck2 build ...
+        shell: bash
+        run: dotslash ./buck/bin/buck2 build @mode//debug //:qq --out buck-out/bindist
+      - name: buck2 test ...
+        shell: bash
+        run: dotslash ./buck/bin/buck2 test @mode//debug third-party//... root//...
+      - name: Upload build logs
+        if: always()
+        run: dotslash ./buck/bin/buck2 run //src/tools/buck2-logs:upload -- --host https://buck2-logs.deno.dev
+      - name: Upload build artifacts
+        if: always()
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808
+        with:
+          name: qq-${{ matrix.abi }}
+          path: buck-out/bindist
+          retention-days: 14

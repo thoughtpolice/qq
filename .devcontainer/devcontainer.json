@@ -1,0 +1,30 @@
+{
+    "name": "qq development container",
+    "build": {
+        // Path is relative to the devcontainer.json file.
+        "dockerfile": "Dockerfile"
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/rust:1": {},
+        "ghcr.io/devcontainers-community/features/llvm:3": {}
+    },
+    "postCreateCommand": "./.devcontainer/setup.sh",
+    "customizations": {
+        "codespaces": {
+            "openFiles": [
+                "src/main.rs"
+            ]
+        },
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "ms-azuretools.vscode-docker",
+                "GitHub.vscode-github-actions",
+                "denoland.vscode-deno"
+            ]
+        }
+    },
+    "remoteEnv": {
+        "PATH": "${containerWorkspaceFolder}/buck/bin:${containerWorkspaceFolder}/buck/bin/extra:${containerEnv:PATH}"
+    }
+}
