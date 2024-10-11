@@ -1,0 +1,43 @@
+#!/usr/bin/env dotslash
+
+{
+  "name": "rust-analyzer",
+  "platforms": {
+    "macos-aarch64": {
+      "size": 12766389,
+      "hash": "blake3",
+      "digest": "57a61057dddf058d0df87c0c456e3f52ba2df9c5062702c9380128a55999b22c",
+      "format": "gz",
+      "path": "rust-analyzer-aaarch64-apple-darwin",
+      "providers": [
+        {
+          "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2024-08-27/rust-analyzer-aarch64-apple-darwin.gz"
+        }
+      ]
+    },
+    "windows-x86_64": {
+      "size": 12577919,
+      "hash": "blake3",
+      "digest": "37afe8923e921100a04bd0f6afbe9d5bde0b2cb50a71221b8bf56613d3d289e5",
+      "format": "gz",
+      "path": "rust-analyzer-x86_64-pc-windows-msvc.exe",
+      "providers": [
+        {
+          "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2024-08-27/rust-analyzer-x86_64-pc-windows-msvc.gz"
+        }
+      ]
+    },
+    "linux-x86_64": {
+      "size": 14817875,
+      "hash": "blake3",
+      "digest": "f0823bd4fc2ea6f54ca66a3faa6c0350324a305b19e991abd1fc1b937795ba4b",
+      "format": "gz",
+      "path": "rust-analyzer-x86_64-unknown-linux-gnu",
+      "providers": [
+        {
+          "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2024-08-27/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+        }
+      ]
+    }
+  }
+}
