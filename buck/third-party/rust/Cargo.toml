@@ -43,11 +43,6 @@ hyper-util = { version = "0.1.10", features = [
 fail = "0.5.1"
 futures = "0.3.31"
 # NOTE: must match jj
-gix = { version = "0.70.0", default-features = false, features = [
-    "index",
-    "max-performance-safe",
-    "blob-diff",
-] }
 insta = "1.42.0"
 miette = "7.4.0"
 openssl = "0.10.68"
@@ -73,8 +68,8 @@ tracing-subscriber = "0.3.19"
 tokio-util = { version = "0.7.13", features = ["compat"] }
 
 # NOTE (jj): adjust fixups.toml too
-jj-lib = { git = "https://github.com/martinvonz/jj", rev = "7f0eae0be85ed55035c8d9dd1d7b3349d39bf8b9" }
-jj-cli = { git = "https://github.com/martinvonz/jj", rev = "7f0eae0be85ed55035c8d9dd1d7b3349d39bf8b9" }
+jj-lib = { git = "https://github.com/martinvonz/jj", rev = "5d43e1ddc9d0af2bddcc60221925ce1270847a3b", default-features = false }
+jj-cli = { git = "https://github.com/martinvonz/jj", rev = "5d43e1ddc9d0af2bddcc60221925ce1270847a3b", default-features = false }
 
 [target.'cfg(unix)'.dependencies]
 

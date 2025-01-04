@@ -58,6 +58,7 @@ cxx_link_flags = select({
         "secur32.lib",
         "shell32.lib",
         "user32.lib",
+        "iphlpapi.lib",
     ],
 })
 
