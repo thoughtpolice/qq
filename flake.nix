@@ -44,6 +44,9 @@
 
           # for grammar development
           pest-ide-tools
+
+          # other stuff
+          cargo-edit
         ] ++ darwinDeps ++ linuxDeps;
 
         shellHook = with pkgs; ''

@@ -1,4 +1,5 @@
 cargo_env = true
+buildscript = []
 
 [export_sources]
 name = "srcs"
