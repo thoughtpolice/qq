@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: © 2024 Austin Seipp
+# SPDX-FileCopyrightText: © 2024-2025 Austin Seipp
 # SPDX-License-Identifier: Apache-2.0
 
 # XXX HACK (aseipp): get bindgen-cli binaries everywhere, somehow

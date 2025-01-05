@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: © 2024 Austin Seipp
+# SPDX-FileCopyrightText: © 2024-2025 Austin Seipp
 # SPDX-License-Identifier: Apache-2.0
 
 def _meta_write_package_value(k: str, v) -> None:
