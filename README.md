@@ -88,44 +88,43 @@ TBD.
 Upstream bugs and PRs:
 
 - Offline build support &mdash; **unclear how to proceed**
-  - [ ] Reindeer support for `.crate` files: <https://github.com/facebookincubator/reindeer/>
   - [ ] Import 3rd party library source code into the repository?
-- RE/AC support:
-  - [ ] Missing support for local execution `ActionCache` support
-    - <https://github.com/facebook/buck2/pull/765>
-    - <https://github.com/facebook/buck2/pull/764>
-  - [x] ~~File size logic bugs <https://github.com/facebook/buck2/pull/639>~~
-  - [x] ~~Buggy concurrency limiter: <https://github.com/facebook/buck2/pull/642>~~
-  - [ ] Failure diagonstics <https://github.com/facebook/buck2/pull/656>
-  - [ ] `rust_library` caching for `local_only=True` (TBA)
-- `rust-analyzer` + `rust-project`
-  - [x] ~~`linked_projects` support: <https://github.com/rust-lang/rust-analyzer/pull/17246>~~
-  - [x] ~~Unbreak OSS use of `rust-project`: <https://github.com/facebook/buck2/pull/659>~~
-  - [x] ~~`--sysroot-mode` support for `rust-project`: <https://github.com/facebook/buck2/pull/745>~~
-  - [x] ~~`rust-project check` is broken: <https://github.com/facebook/buck2/pull/754>~~
-  - [x] ~~Invalid dep graph due to lack of `sysroot_src`~~
-    - <https://github.com/facebook/buck2/issues/747>
-    - <https://github.com/facebook/buck2/pull/756>
-  - [ ] Prebuilt `rust-project` binaries + dotslash: <https://github.com/facebook/buck2/pull/766>
-    - Exists in my (light) fork w/ some patches: <https://github.com/thoughtpolice/buck2>
-    - Currently provided in this repo for now, but not upstream
+  - [x] ~~Reindeer support for `.crate` files: <https://github.com/facebookincubator/reindeer/pull/46>~~
 - Log shuffling
   - [ ] `buck log --trace-id ...` OSS support: <https://github.com/facebook/buck2/pull/770>
     - Supported in my fork of Buck2 (+ this repo)
     - Can replay any GHA build (within ~24hrs) with a known Build ID
     - <https://github.com/facebook/buck2/pull/702>
 - Online build analysis + reporting
+  - [ ] Bazel Event Stream support: <https://github.com/facebook/buck2/pull/811>
   - [ ] Emit CI build events to an external service: <https://github.com/facebook/buck2/pull/685>
     - Will allow us to abstract away underlying CI to some extent
+- RE/AC support:
+  - [ ] `rust_library` caching for `local_only=True` (TBA)
+  - [ ] Missing support for local execution `ActionCache` support
+    - <https://github.com/facebook/buck2/pull/765>
+    - <https://github.com/facebook/buck2/pull/771>
+  - [ ] Wrong hashing algorithm used for upload permission checks <https://github.com/facebook/buck2/pull/784>
+  - [ ] Block on concurrent blob uploads <https://github.com/facebook/buck2/pull/750>
+  - [x] ~~File size logic bugs <https://github.com/facebook/buck2/pull/639>~~
+  - [x] ~~Buggy concurrency limiter: <https://github.com/facebook/buck2/pull/642>~~
+  - [x] ~~Failure diagonstics <https://github.com/facebook/buck2/pull/656>~~
+- `rust-analyzer` + `rust-project`
+  - [ ] rust-project: add support for specifying `buck2` exe <https://github.com/facebook/buck2/pull/774>
+  - [x] ~~`linked_projects` support: <https://github.com/rust-lang/rust-analyzer/pull/17246>~~
+  - [x] ~~Unbreak OSS use of `rust-project`: <https://github.com/facebook/buck2/pull/659>~~
+  - [x] ~~`--sysroot-mode` support for `rust-project`: <https://github.com/facebook/buck2/pull/745>~~
+  - [x] ~~`rust-project check` is broken: <https://github.com/facebook/buck2/pull/754>~~
+  - [x] ~~Invalid dep graph due to lack of `sysroot_src`~~
+  - [x] ~~Prebuilt `rust-project` binaries + dotslash: <https://github.com/facebook/buck2/pull/766>~~
 - UX improvements
-  - [ ] Improve `ValidationInfo` failure messages <https://github.com/facebook/buck2/pull/769>
   - [ ] Aggressively annoying download warnings <https://github.com/facebook/buck2/issues/316>
     - Also solved by solid offline support
   - [ ] `buck2 test` should build targets too <https://github.com/facebook/buck2/pull/702>
-  - [ ] Add subtarget information to test name <https://github.com/facebook/buck2/pull/743>
+  - [x] ~~Improve `ValidationInfo` failure messages <https://github.com/facebook/buck2/pull/769>~~
+  - [x] ~~Add subtarget information to test name <https://github.com/facebook/buck2/pull/743>~~
 - Platform support
-  - [x] ~~`buck2` aarch64-linux binaries don't with 16k page size
-        <https://github.com/facebook/buck2/pull/693>~~
+  - [x] ~~`buck2` aarch64-linux binaries don't with 16k page size <https://github.com/facebook/buck2/pull/693>~~
 
 ## License
 
