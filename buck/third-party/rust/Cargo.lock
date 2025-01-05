@@ -460,6 +460,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "buck-resources"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3e409aa63d3f8b24653571109600164dfc3955f69c80345fe0bd2231c5ff0673"
+dependencies = [
+ "dunce",
+ "once_cell",
+ "serde",
+ "serde_json",
+ "thiserror 1.0.69",
+]
+
+[[package]]
 name = "bumpalo"
 version = "3.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -843,6 +856,7 @@ dependencies = [
  "encode_unicode",
  "libc",
  "once_cell",
+ "unicode-width 0.2.0",
  "windows-sys 0.59.0",
 ]
 
@@ -1115,6 +1129,19 @@ dependencies = [
  "quote",
  "syn 2.0.96",
  "unicode-xid",
+]
+
+[[package]]
+name = "dialoguer"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "658bce805d770f407bc62102fca7c2c64ceef2fbcb2b8bd19d2765ce093980de"
+dependencies = [
+ "console",
+ "shell-words",
+ "tempfile",
+ "thiserror 1.0.69",
+ "zeroize",
 ]
 
 [[package]]
@@ -3471,6 +3498,7 @@ dependencies = [
  "arangors",
  "async-trait",
  "backtrace",
+ "buck-resources",
  "bytes",
  "capnp",
  "capnp-futures",
@@ -3481,6 +3509,8 @@ dependencies = [
  "cedar-policy-formatter",
  "clap",
  "console-subscriber",
+ "dialoguer",
+ "dirs 5.0.1",
  "fail",
  "futures",
  "http",
@@ -3495,6 +3525,7 @@ dependencies = [
  "openssl",
  "pest",
  "pest_derive",
+ "pollster",
  "rusqlite",
  "s3s",
  "serde",
@@ -3913,6 +3944,12 @@ checksum = "f40ca3c46823713e0d4209592e8d6e826aa57e928f09752619fc696c499637f6"
 dependencies = [
  "lazy_static",
 ]
+
+[[package]]
+name = "shell-words"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "24188a676b6ae68c3b2cb3a01be17fbf7240ce009799bb56d5b1409051e78fde"
 
 [[package]]
 name = "shlex"

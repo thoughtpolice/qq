@@ -1148,6 +1148,36 @@ third_party_rust.rust_library(
     ],
 )
 
+alias(
+    name = "buck-resources",
+    actual = ":buck-resources-1.0.0",
+    visibility = ["PUBLIC"],
+)
+
+http_archive(
+    name = "buck-resources-1.0.0.crate",
+    sha256 = "3e409aa63d3f8b24653571109600164dfc3955f69c80345fe0bd2231c5ff0673",
+    strip_prefix = "buck-resources-1.0.0",
+    urls = ["https://static.crates.io/crates/buck-resources/1.0.0/download"],
+    visibility = [],
+)
+
+third_party_rust.rust_library(
+    name = "buck-resources-1.0.0",
+    srcs = [":buck-resources-1.0.0.crate"],
+    crate = "buck_resources",
+    crate_root = "buck-resources-1.0.0.crate/src/lib.rs",
+    edition = "2021",
+    visibility = [],
+    deps = [
+        ":dunce-1.0.5",
+        ":once_cell-1.20.2",
+        ":serde-1.0.217",
+        ":serde_json-1.0.137",
+        ":thiserror-1.0.69",
+    ],
+)
+
 http_archive(
     name = "bumpalo-3.16.0.crate",
     sha256 = "79296716171880943b8470b5f8d03aa55eb2e645a4874bdbb28adb49162e012c",
@@ -2215,6 +2245,11 @@ third_party_rust.rust_library(
     crate = "console",
     crate_root = "console-0.15.10.crate/src/lib.rs",
     edition = "2018",
+    features = [
+        "ansi-parsing",
+        "default",
+        "unicode-width",
+    ],
     platform = {
         "windows-gnu": dict(
             deps = [
@@ -2233,6 +2268,7 @@ third_party_rust.rust_library(
     deps = [
         ":libc-0.2.169",
         ":once_cell-1.20.2",
+        ":unicode-width-0.2.0",
     ],
 )
 
@@ -3077,6 +3113,43 @@ third_party_rust.rust_library(
     ],
 )
 
+alias(
+    name = "dialoguer",
+    actual = ":dialoguer-0.11.0",
+    visibility = ["PUBLIC"],
+)
+
+http_archive(
+    name = "dialoguer-0.11.0.crate",
+    sha256 = "658bce805d770f407bc62102fca7c2c64ceef2fbcb2b8bd19d2765ce093980de",
+    strip_prefix = "dialoguer-0.11.0",
+    urls = ["https://static.crates.io/crates/dialoguer/0.11.0/download"],
+    visibility = [],
+)
+
+third_party_rust.rust_library(
+    name = "dialoguer-0.11.0",
+    srcs = [":dialoguer-0.11.0.crate"],
+    crate = "dialoguer",
+    crate_root = "dialoguer-0.11.0.crate/src/lib.rs",
+    edition = "2021",
+    features = [
+        "default",
+        "editor",
+        "password",
+        "tempfile",
+        "zeroize",
+    ],
+    visibility = [],
+    deps = [
+        ":console-0.15.10",
+        ":shell-words-1.1.0",
+        ":tempfile-3.15.0",
+        ":thiserror-1.0.69",
+        ":zeroize-1.8.1",
+    ],
+)
+
 http_archive(
     name = "diff-0.1.13.crate",
     sha256 = "56254986775e3233ffa9c4d7d3faaf6d36a2c09d30b20687e9f88bc8bafc16c8",
@@ -3162,6 +3235,12 @@ third_party_rust.rust_library(
     edition = "2015",
     visibility = [],
     deps = [":dirs-sys-0.3.7"],
+)
+
+alias(
+    name = "dirs",
+    actual = ":dirs-5.0.1",
+    visibility = ["PUBLIC"],
 )
 
 http_archive(
@@ -8313,6 +8392,12 @@ third_party_rust.rust_library(
     visibility = [],
 )
 
+alias(
+    name = "pollster",
+    actual = ":pollster-0.3.0",
+    visibility = ["PUBLIC"],
+)
+
 http_archive(
     name = "pollster-0.3.0.crate",
     sha256 = "22686f4785f02a4fcc856d3b3bb19bf6c8160d103f7a99cc258bddd0251dc7f2",
@@ -9321,6 +9406,7 @@ third_party_rust.rust_binary(
         ":arangors-0.6.0",
         ":async-trait-0.1.85",
         ":backtrace-0.3.73",
+        ":buck-resources-1.0.0",
         ":bytes-1.9.0",
         ":capnp-0.20.3",
         ":capnp-futures-0.20.1",
@@ -9331,6 +9417,8 @@ third_party_rust.rust_binary(
         ":cedar-policy-formatter-4.3.1",
         ":clap-4.5.27",
         ":console-subscriber-0.4.1",
+        ":dialoguer-0.11.0",
+        ":dirs-5.0.1",
         ":fail-0.5.1",
         ":futures-0.3.31",
         ":http-1.2.0",
@@ -9345,6 +9433,7 @@ third_party_rust.rust_binary(
         ":openssl-0.10.68",
         ":pest-2.7.15",
         ":pest_derive-2.7.15",
+        ":pollster-0.3.0",
         ":rusqlite-0.33.0",
         ":s3s-0.10.1",
         ":serde-1.0.217",
@@ -10140,6 +10229,7 @@ third_party_rust.rust_library(
         "default",
         "indexmap",
         "preserve_order",
+        "raw_value",
         "std",
     ],
     rustc_flags = ["@$(location :serde_json-1.0.137-build-script-run[rustc_flags])"],
@@ -10164,6 +10254,7 @@ third_party_rust.rust_binary(
         "default",
         "indexmap",
         "preserve_order",
+        "raw_value",
         "std",
     ],
     visibility = [],
@@ -10178,6 +10269,7 @@ third_party_rust.buildscript_run(
         "default",
         "indexmap",
         "preserve_order",
+        "raw_value",
         "std",
     ],
     version = "1.0.137",
@@ -10460,6 +10552,27 @@ third_party_rust.rust_library(
     edition = "2018",
     visibility = [],
     deps = [":lazy_static-1.5.0"],
+)
+
+http_archive(
+    name = "shell-words-1.1.0.crate",
+    sha256 = "24188a676b6ae68c3b2cb3a01be17fbf7240ce009799bb56d5b1409051e78fde",
+    strip_prefix = "shell-words-1.1.0",
+    urls = ["https://static.crates.io/crates/shell-words/1.1.0/download"],
+    visibility = [],
+)
+
+third_party_rust.rust_library(
+    name = "shell-words-1.1.0",
+    srcs = [":shell-words-1.1.0.crate"],
+    crate = "shell_words",
+    crate_root = "shell-words-1.1.0.crate/src/lib.rs",
+    edition = "2015",
+    features = [
+        "default",
+        "std",
+    ],
+    visibility = [],
 )
 
 http_archive(
