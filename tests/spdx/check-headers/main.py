@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: © 2024 Austin Seipp
+# SPDX-FileCopyrightText: © 2024-2025 Austin Seipp
 # SPDX-License-Identifier: Apache-2.0
 
 # check-spdx: a script to check the SPDX license headers of all files in the
@@ -50,13 +50,14 @@ def eprint(*args, **kwargs):
 
 # MARK: SPDX check
 def has_spdx_header(file: str, lines: list[str]) -> bool:
+    years = '2024-2025'
     bzl_style_header = [
-        '# SPDX-FileCopyrightText: © 2024 ',
+        '# SPDX-FileCopyrightText: © {} '.format(years),
         '# SPDX-License-Identifier: Apache-2.0',
     ]
 
     cxx_style_header = [
-        '// SPDX-FileCopyrightText: © 2024 ',
+        '// SPDX-FileCopyrightText: © {} '.format(years),
         '// SPDX-License-Identifier: Apache-2.0',
     ]
 
