@@ -12,7 +12,7 @@ runs:
       shell: bash
       env:
         INPUT_VERSION: ${{ inputs.version }}
-      run: |
+      run: | # zizmor: ignore[github-env]
         mkdir -p $RUNNER_TEMP/dotslash
         echo "$RUNNER_TEMP/dotslash" >> $GITHUB_PATH
 
