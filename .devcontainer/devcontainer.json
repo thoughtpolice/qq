@@ -12,7 +12,7 @@
     "customizations": {
         "codespaces": {
             "openFiles": [
-                "src/main.rs"
+                "src/qq-cli/main.rs"
             ]
         },
         "vscode": {
