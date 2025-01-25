@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: © 2024-2025 Austin Seipp
 # SPDX-License-Identifier: Apache-2.0
 
+load("@prelude//paths.bzl", "paths")
 load("@root//buck/shims/qq.bzl", "qq")
 load("@root//buck/shims/package.bzl", "pkg")
 
@@ -52,6 +53,8 @@ http_archive(
     ],
 )
 
+# MARK: C/C++ library
+
 qq.cxx_library(
     name = 'mimalloc',
     srcs = [
@@ -102,4 +105,46 @@ qq.cxx_library(
         'unix/prim.c':      ':src[src/prim/unix/prim.c]',
     },
     visibility = [ 'PUBLIC' ],
+)
+
+# MARK: C/C++ tests
+
+CXX_TESTS = map(lambda f:
+    # (source file, test name)
+    (f, paths.basename(f).replace('.c', '')),
+    glob(['test-*.c'])
+)
+
+[
+    qq.cxx_binary(
+        name = '{}-exe'.format(t),
+        srcs = [ src ],
+        deps = [ ':mimalloc' ],
+        link_style = 'static',
+    ) for (src, t) in CXX_TESTS
+]
+
+[
+    qq.command_test(
+        name = '{}'.format(t),
+        cmd = [ "$(exe :{}-exe)".format(t) ],
+    ) for (_, t) in CXX_TESTS
+]
+
+# MARK: Rust tests
+
+qq.rust_library(
+    name = 'rust',
+    crate = 'mimalloc',
+    srcs = [ 'lib.rs' ],
+    deps = [ ':mimalloc' ],
+    tests = [
+        ':rust-test',
+    ]
+)
+
+qq.rust_test(
+    name = 'rust-test',
+    srcs = [ 'lib.rs' ],
+    deps = [ ':mimalloc' ],
 )
