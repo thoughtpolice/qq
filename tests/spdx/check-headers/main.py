@@ -42,7 +42,7 @@ BAD_FILES = [
 
     # REASON FIXME TODO (aseipp): this file is technically MIT and not
     # Apache-2.0, and it has a modified copyright year.
-    "buck/third-party/mimalloc/rust/lib.rs",
+    "buck/third-party/mimalloc/lib.rs",
 ]
 
 def eprint(*args, **kwargs):
