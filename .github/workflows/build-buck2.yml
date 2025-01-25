@@ -29,8 +29,10 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update && sudo apt-get install -y mold
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+      - name: Checkout repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
         with:
+          persist-credentials: false
           fetch-depth: 0
       - name: Install DotSlash
         uses: ./.github/actions/install-dotslash
