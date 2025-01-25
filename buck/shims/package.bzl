@@ -1,6 +1,10 @@
 # SPDX-FileCopyrightText: © 2024-2025 Austin Seipp
 # SPDX-License-Identifier: Apache-2.0
 
+load("@prelude//cfg/modifier:cfg_constructor.bzl", "cfg_constructor_post_constraint_analysis", "cfg_constructor_pre_constraint_analysis")
+load("@prelude//cfg/modifier:common.bzl", "MODIFIER_METADATA_KEY")
+load("@prelude//cfg/modifier:set_cfg_modifiers.bzl", "set_cfg_modifiers")
+
 def _meta_write_package_value(k: str, v) -> None:
     # FIXME (aseipp): propagate overwrite upwards so it can be conditionally
     # enabled
@@ -107,6 +111,17 @@ def __get_pkg_path() -> str:
 def third_party_meta(names: list[str]):
     _meta_write_package_value('3p', names)
 
+# MARK: Modifiers
+
+def _set_cfg_constructor(aliases = dict()):
+    native.set_cfg_constructor(
+        stage0 = cfg_constructor_pre_constraint_analysis,
+        stage1 = cfg_constructor_post_constraint_analysis,
+        key = MODIFIER_METADATA_KEY,
+        aliases = struct(**aliases),
+        extra_data = struct(),
+    )
+
 # MARK: Public API
 
 pkg = struct(
@@ -115,4 +130,7 @@ pkg = struct(
     get_path = __get_pkg_path,
 
     version = lambda: read_package_value('meta.version'),
+
+    cfg_constructor = _set_cfg_constructor,
+    cfg_modifiers = set_cfg_modifiers,
 )
