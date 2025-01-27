@@ -48,18 +48,13 @@ TBD.
       - [ ] Is hermetic MSVC possible?
 - DevEx improvements
   - Turnkey Codespaces for instant-hacking
-    - [x] ~~devcontainer that can be launched from GitHub UI~~
-    - [x] ~~`dotslash`, `rust-analyzer`, `buck2`, `rust-project` preinstalled~~
-    - [ ] Working `rust-analyzer` support on first click
-      - It seems the official `rust` devcontainer feature is broken?
-      - It creates an invalid settings file?
-      - All builds fail, but it would otherwise work...
-    - [ ] Tested on macOS, Windows, Linux
     - [ ] Pre-warmed/Pre-built devcontainer
       - Current boot time is ~several minutes on a cold start
-  - Log shuffling
-    - [x] ~~Upload GHA build logs to remote server~~
-    - [ ] Upstream Buck2 support for downloading logs
+    - [ ] Tested on macOS, Windows, Linux
+    - [x] ~~devcontainer that can be launched from GitHub UI~~
+    - [x] ~~`dotslash`, `rust-analyzer`, `buck2`, `rust-project` preinstalled~~
+    - [x] ~~Working `buck2 build`/`rust-analyzer` support on first click~~
+      - Fixed by [facebook/buck2@da5ede70e160dbc2c2ec948a16b57f9ac9ba165f](https://github.com/facebook/buck2/commit/da5ede70e160dbc2c2ec948a16b57f9ac9ba165f)
   - [ ] Target Determination
     - Could use **[buck2-change-detector](https://github.com/facebookincubator/buck2-change-detector/tree/main/btd)**
     - However it's a bit of a big hammer, with no provided binaries
@@ -67,7 +62,7 @@ TBD.
   - Dependency monitoring + security updates
     - [ ] Dependabot integration with our third-party `Cargo.toml`?
       - How would we run `reindeer buckify`?
-    - [x] **[osv.dev](https://osv.dev)** integration?
+    - [x] ~~**[osv.dev](https://osv.dev)** integration?~~
       - [x] ~~RUSTSEC support based on `Cargo.lock`~~
       - [x] ~~Generic 3rd party support (BoringSSL, zstd, etc)~~
         - Still needs testing: `mimalloc`, `capnproto`, `zlib`
@@ -90,22 +85,24 @@ Upstream bugs and PRs:
 - Offline build support &mdash; **unclear how to proceed**
   - [ ] Import 3rd party library source code into the repository?
   - [x] ~~Reindeer support for `.crate` files: <https://github.com/facebookincubator/reindeer/pull/46>~~
-- Log shuffling
+- Log & build reporting
   - [ ] `buck log --trace-id ...` OSS support: <https://github.com/facebook/buck2/pull/770>
-    - Supported in my fork of Buck2 (+ this repo)
+    - **Patched** in https://github.com/thoughtpolice/buck2 fork used by this repo.
     - Can replay any GHA build (within ~24hrs) with a known Build ID
     - <https://github.com/facebook/buck2/pull/702>
-- Online build analysis + reporting
   - [ ] Bazel Event Stream support: <https://github.com/facebook/buck2/pull/811>
-  - [ ] Emit CI build events to an external service: <https://github.com/facebook/buck2/pull/685>
+    - See also: <https://github.com/facebook/buck2/pull/685>
     - Will allow us to abstract away underlying CI to some extent
 - RE/AC support:
   - [ ] `rust_library` caching for `local_only=True` (TBA)
   - [ ] Missing support for local execution `ActionCache` support
+    - **Patched** in https://github.com/thoughtpolice/buck2 fork used by this repo.
     - <https://github.com/facebook/buck2/pull/765>
     - <https://github.com/facebook/buck2/pull/771>
   - [ ] Wrong hashing algorithm used for upload permission checks <https://github.com/facebook/buck2/pull/784>
+    - **Patched** in https://github.com/thoughtpolice/buck2 fork used by this repo.
   - [ ] Block on concurrent blob uploads <https://github.com/facebook/buck2/pull/750>
+    - **Patched** in https://github.com/thoughtpolice/buck2 fork used by this repo.
   - [x] ~~File size logic bugs <https://github.com/facebook/buck2/pull/639>~~
   - [x] ~~Buggy concurrency limiter: <https://github.com/facebook/buck2/pull/642>~~
   - [x] ~~Failure diagonstics <https://github.com/facebook/buck2/pull/656>~~
@@ -118,9 +115,9 @@ Upstream bugs and PRs:
   - [x] ~~Invalid dep graph due to lack of `sysroot_src`~~
   - [x] ~~Prebuilt `rust-project` binaries + dotslash: <https://github.com/facebook/buck2/pull/766>~~
 - UX improvements
-  - [ ] Aggressively annoying download warnings <https://github.com/facebook/buck2/issues/316>
-    - Also solved by solid offline support
   - [ ] `buck2 test` should build targets too <https://github.com/facebook/buck2/pull/702>
+  - [x] ~~Aggressively annoying download warnings <https://github.com/facebook/buck2/issues/316>~~
+    - **Patched** in https://github.com/thoughtpolice/buck2 fork used by this repo.
   - [x] ~~Improve `ValidationInfo` failure messages <https://github.com/facebook/buck2/pull/769>~~
   - [x] ~~Add subtarget information to test name <https://github.com/facebook/buck2/pull/743>~~
 - Platform support
