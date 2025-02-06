@@ -3,9 +3,15 @@
 
 load(":defs.bzl", "download_deno", "deno_toolchain")
 
-DENO_VERSION = '2.0.0'
+DENO_VERSION = '2.1.9'
 
 ALL_DENO_VERSIONS = {
+    '2.1.9': [
+        ('aarch64-unknown-linux-gnu', '5ed561a614bd5e5505c86c65ab72cf32fc5c4b997d824247e62f96f7c897353d'),
+        ('aarch64-apple-darwin', '6b8a81048289a9627b64e170cfaf48c321d3aefa37f759f549b2187db3338f18'),
+        ('x86_64-unknown-linux-gnu', 'e42543bc53f5c6014f4a015f6c722894d1554c332d66f324d52e8b29c7ac6d86'),
+        ('x86_64-pc-windows-msvc', 'b735ba1c6ab8e1c43be3756f4fdfd43c4449930da65e805b0ca610e8cf7fc74b'),
+    ],
     '2.0.0': [
         ('aarch64-unknown-linux-gnu', 'a76ada742b4e7670b1c50783cd01be200a38ae2439be583dd07c8069d387f99e'),
         ('aarch64-apple-darwin', 'ad122b1c8c823378469fb4972c0cc6dafc01353dfa5c7303d199bdc1dee9d5e9'),
