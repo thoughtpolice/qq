@@ -13,7 +13,6 @@ cxx_genrule(
     name = 'wrapper.rs',
     outs = {
         'wrapper.rs': [ 'wrapper.rs' ],
-        # XXX FIXME (aseipp): --wrap-static-fns uses $TMPDIR? why?
         'extern.c': [ 'extern.c' ],
     },
     default_outs = [ 'wrapper.rs' ],
