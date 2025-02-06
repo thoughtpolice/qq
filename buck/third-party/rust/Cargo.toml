@@ -28,9 +28,11 @@ cedar-policy = "4.3.1"
 cedar-policy-cli = "4.3.1"
 cedar-policy-formatter = "4.3.1"
 clap = { version = "4.5.27", features = ["derive"] }
+console-subscriber = "0.4.1"
 dialoguer = "0.11.0"
 dirs = "5.0.1"
-console-subscriber = "0.4.1"
+fail = "0.5.1"
+futures = "0.3.31"
 http = "1.2"
 http-body-util = "0.1.2"
 hyper = { version = "1.5.2", features = ["client", "server", "http1"] }
@@ -43,10 +45,9 @@ hyper-util = { version = "0.1.10", features = [
     "http1",
     "tokio",
 ] }
-fail = "0.5.1"
-futures = "0.3.31"
 # NOTE: must match jj
 insta = "1.42.0"
+libc = "0.2.169"
 miette = "7.4.0"
 openssl = "0.10.68"
 pest = "2.7.15"
