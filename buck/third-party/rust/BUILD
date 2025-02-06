@@ -6308,6 +6308,12 @@ third_party_rust.rust_library(
     visibility = [],
 )
 
+alias(
+    name = "libc",
+    actual = ":libc-0.2.169",
+    visibility = ["PUBLIC"],
+)
+
 http_archive(
     name = "libc-0.2.169.crate",
     sha256 = "b5aba8db14291edd000dfcc4d620c7ebfb122c613afb886ca8803fa4e128a20a",
@@ -9446,6 +9452,7 @@ third_party_rust.rust_binary(
         ":insta-1.42.1",
         ":jj-cli-0.25.0",
         ":jj-lib-0.25.0",
+        ":libc-0.2.169",
         ":miette-7.5.0",
         ":openssl-0.10.70",
         ":pest-2.7.15",
