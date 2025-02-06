@@ -1,4 +1,4 @@
-name: buck2
+name: build
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15 # NOTE (aseipp): keep in-sync with the build.yml timeout limit
 
-    name: build buck2 binaries
+    name: binaries
     steps:
       - name: (Linux) Install Mold
         if: runner.os == 'Linux'

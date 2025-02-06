@@ -1,4 +1,4 @@
-name: check dotslash files
+name: dotslash
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 permissions: read-all
 
 jobs:
-  nix:
+  check-files:
     strategy:
       fail-fast: false
       matrix:
@@ -23,7 +23,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15 # NOTE (aseipp): keep in-sync with the build.yml timeout limit
 
-    name: check dotslash files
+    name: check files
     steps:
       - name: Checkout repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
