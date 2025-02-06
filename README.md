@@ -55,10 +55,8 @@ TBD.
     - [x] ~~`dotslash`, `rust-analyzer`, `buck2`, `rust-project` preinstalled~~
     - [x] ~~Working `buck2 build`/`rust-analyzer` support on first click~~
       - Fixed by [facebook/buck2@da5ede70e160dbc2c2ec948a16b57f9ac9ba165f](https://github.com/facebook/buck2/commit/da5ede70e160dbc2c2ec948a16b57f9ac9ba165f)
-  - [ ] Target Determination
-    - Could use **[buck2-change-detector](https://github.com/facebookincubator/buck2-change-detector/tree/main/btd)**
-    - However it's a bit of a big hammer, with no provided binaries
-    - A simpler solution for our own needs would be OK for a long time
+  - [x] Target Determination
+    - `supertd` is available (from **[buck2-change-detector](https://github.com/facebookincubator/buck2-change-detector/tree/main/btd)**)
   - Dependency monitoring + security updates
     - [ ] Dependabot integration with our third-party `Cargo.toml`?
       - How would we run `reindeer buckify`?
