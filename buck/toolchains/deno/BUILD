@@ -3,26 +3,14 @@
 
 load(":defs.bzl", "download_deno", "deno_toolchain")
 
-DENO_VERSION = '2.1.9'
+DENO_VERSION = '2.1.10'
 
 ALL_DENO_VERSIONS = {
-    '2.1.9': [
-        ('aarch64-unknown-linux-gnu', '5ed561a614bd5e5505c86c65ab72cf32fc5c4b997d824247e62f96f7c897353d'),
-        ('aarch64-apple-darwin', '6b8a81048289a9627b64e170cfaf48c321d3aefa37f759f549b2187db3338f18'),
-        ('x86_64-unknown-linux-gnu', 'e42543bc53f5c6014f4a015f6c722894d1554c332d66f324d52e8b29c7ac6d86'),
-        ('x86_64-pc-windows-msvc', 'b735ba1c6ab8e1c43be3756f4fdfd43c4449930da65e805b0ca610e8cf7fc74b'),
-    ],
-    '2.0.0': [
-        ('aarch64-unknown-linux-gnu', 'a76ada742b4e7670b1c50783cd01be200a38ae2439be583dd07c8069d387f99e'),
-        ('aarch64-apple-darwin', 'ad122b1c8c823378469fb4972c0cc6dafc01353dfa5c7303d199bdc1dee9d5e9'),
-        ('x86_64-unknown-linux-gnu', 'd201b812bbc6cc2565012e52c2a9cb9965d768afd28bbc2ba29ae667bf7250a6'),
-        ('x86_64-pc-windows-msvc', '34ea525eeaae3ef2eb72e5f7c237fbf844fa900e6b8e666c5db2553f56f9d382'),
-    ],
-    '1.46.3': [
-        ('aarch64-unknown-linux-gnu', 'acf7e0110e186fc515a1b7367d9c56a9f0205ad448c1c08ab769b8e3ce6f700f'),
-        ('aarch64-apple-darwin', 'e74f8ddd6d8205654905a4e42b5a605ab110722a7898aef68bc35d6e704c2946'),
-        ('x86_64-unknown-linux-gnu', '39bb1d21ad19c16fcb14f9d58fb542c2bccf0cd92c19aee8127ac5112b48bf83'),
-        ('x86_64-pc-windows-msvc', 'd9428daa1b3763bdf562054d0fc40832658515b7071c7f7e98d61961adc2d61a'),
+    '2.1.10': [
+        ('aarch64-unknown-linux-gnu', 'ee01a21a2b6ebd1aaa7d349b5e05238bfb5f4b3062a225ba78f591e242b973e3'),
+        ('aarch64-apple-darwin', 'd33fe472cd93bbabcdfbcb5cb9806cf49e3a862365963aef323bafb9d7326bf4'),
+        ('x86_64-unknown-linux-gnu', '55d18bf969b7ac6e132b3a35f31f8f01c0bd9c0e847e05b459f40384ce746cc1'),
+        ('x86_64-pc-windows-msvc', '6a5e82c9796bdaa8da0626c2e4c0f960d4da7028775003b3b81eeb88238a2f47'),
     ],
 }
 
