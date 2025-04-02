@@ -33,7 +33,7 @@ jobs:
         uses: ./.github/actions/install-dotslash
       - shell: bash
         run: |
-          for x in $(ls -p buck/bin | grep -v / | grep -v BUILD | grep -v PACKAGE); do
+          for x in $(ls -p buck/bin | grep -v / | grep -v BUILD | grep -v PACKAGE grep -v \.exe); do
             if ! dotslash "buck/bin/$x" --help; then
               echo "error: $x failed to run on ${{ matrix.abi }}"
               exit 1

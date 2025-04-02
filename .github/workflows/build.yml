@@ -36,20 +36,22 @@ jobs:
           fetch-depth: 0
       - name: Install DotSlash
         uses: ./.github/actions/install-dotslash
-      # FIXME (aseipp): use tools out of `$PATH` after we have dotslash .exe
-      # shim files for windows. until then just invoke manually
+      - name: Set up environment
+        shell: bash
+        run: echo "PATH=$GITHUB_WORKSPACE/buck/bin:GITHUB_WORKSPACE/buck/bin/extra:$PATH" >> $GITHUB_ENV
       - name: Init jj repository
         shell: bash
         run: dotslash ./buck/bin/extra/jj git init --colocate
       - name: buck2 build ...
         shell: bash
-        run: dotslash ./buck/bin/buck2 build @mode//debug //:qq --out buck-out/bindist
+        run: buck2 build @mode//debug //:qq --out buck-out/bindist
       - name: buck2 test ...
         shell: bash
-        run: dotslash ./buck/bin/buck2 test @mode//debug third-party//... root//...
+        run: buck2 test @mode//debug third-party//... root//...
       - name: Upload build logs
         if: always()
-        run: dotslash ./buck/bin/buck2 run //src/tools/buck2-logs:upload -- --host https://buck2-logs.deno.dev
+        shell: bash
+        run: buck2 run //src/tools/buck2-logs:upload -- --host https://buck2-logs.deno.dev
       - name: Upload build artifacts
         if: always()
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808

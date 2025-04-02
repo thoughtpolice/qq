@@ -22,7 +22,7 @@ BAD_SUFFIXES = [
     ".md", ".lock", ".txt", ".jsonc",
     ".gitattributes",
     ".gitignore", ".ignore",
-    ".buckconfig", ".buckroot",
+    ".buckconfig", ".buckroot", ".exe",
     ".generated.bzl",
     "Cargo.toml",
     "reindeer.toml",
