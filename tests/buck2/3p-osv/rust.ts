@@ -16,6 +16,10 @@ const RUSTSEC_VIOLATION_EXCEPTIONS = [
         id: "RUSTSEC-2024-0388",
         reason: "temporary, to be fixed upstream in starlark-rust",
     },
+    {
+        id: "RUSTSEC-2024-0436",
+        reason: "temporary, to be fixed by upstream scm-record",
+    },
 ];
 
 // ---------------------------------------------------------------------------------------------------------------------
