@@ -1,7 +1,7 @@
 # qq
 
-> [!WARNING]
-> You probably don't want to be here. Read on for more details.
+> [!CAUTION]
+> This repository is deprecated; it has migrated to <https://github.com/thoughtpolice/a>
 
 This repository contains my extremely experimental, not-production-ready,
 outright dangerous work that is all based around
